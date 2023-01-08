@@ -13,15 +13,15 @@ export const MovieDetails = () => {
         const result = await getMovieDetails(id);
         setMovie(result);
       } catch (error) {
-        console.log('Oops! Something went wrong! Please try again.');
+        console.log('Oops! Something went wrong!');
       }
     }
     getMovie();
   }, [id]);
-  
+  const {title} = movie;
   return(
     <div>
-   <button>Hello</button>
+   <button>hello</button>
   </div>
     ) 
 };

@@ -8,7 +8,7 @@ export const MovieList = ({ movies }) => {
     <Container>
       {movies.map(({ id, title, name, poster_path }) => {
         return (
-          <StyledLink to={`/movies/:id`} key={id}>
+          <StyledLink to={`/movies/${id}`} key={id}>
             <Item >
             <Img
               src={poster_path ? `${URL}${poster_path}` : 'Sorry,coming soon'}

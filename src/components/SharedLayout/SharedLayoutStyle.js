@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
 
 export const Container = styled.div`
   max-width: 1200px;
@@ -8,7 +8,7 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
@@ -19,7 +19,7 @@ export const Header = styled.header`
   > nav {
     display: flex;
   }
-`
+`;
 export const Link = styled(NavLink)`
   padding: 8px 16px;
   border-radius: 4px;
@@ -29,6 +29,5 @@ export const Link = styled(NavLink)`
 
   &.active {
     color: purple;
-    
   }
 `;

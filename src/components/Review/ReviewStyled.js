@@ -1,14 +1,10 @@
-import styled from "styled-components";
-
+import styled from 'styled-components';
 
 export const ReviewList = styled.ul`
-list-style: none;
-
-`
+  list-style: none;
+`;
 
 export const Title = styled.p`
-display: flex;
-align-items: center;
-
-
-`
+  display: flex;
+  align-items: center;
+`;

@@ -1,16 +1,12 @@
-import { Cast,Title,Review } from "./AddInfoStyled"
-import { Link } from "react-router-dom"
+import { Cast, Title, Review } from './AddInfoStyled';
+;
 
 export const AdditionalInfo = () => {
-return(
+  return (
     <>
-    <Title>Additional Info</Title>
-    <Cast to="cast"> Cast </Cast>
-    <Review to= "review">Review</Review>
+      <Title>Additional Info</Title>
+      <Cast to="cast"> Cast </Cast>
+      <Review to="review">Review</Review>
     </>
-    
-    )
-
-
-
-}
+  );
+};

@@ -1,16 +1,18 @@
 import { getMovieDetails } from 'api';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { Box, BoxInfo,Type,} from './MovieDetailsStyled';
+import { useLocation, useParams } from 'react-router-dom';
+import { Box, BoxInfo,Type,BackLink} from './MovieDetailsStyled';
 import { RxDotFilled } from 'react-icons/rx';
 import { Outlet } from 'react-router-dom';
 import { AdditionalInfo } from 'components/AddInfo/AddInfo';
+import { HiArrowLeft } from "react-icons/hi";
 
 export const MovieDetails = () => {
   const { id } = useParams(); 
   const [movie, setMovie] = useState([]);
-   
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? "/";
   useEffect(() => {
     async function getMovie() {
       try {
@@ -27,6 +29,7 @@ export const MovieDetails = () => {
   const userStat = Math.round(vote_average*10);
   return(
     <div>
+      <BackLink to={backLinkHref}><HiArrowLeft size="24" />Back to films</BackLink>
     <Box>
    <img src={poster_path ? `${IMG_URL}${poster_path}`:'Sorry,no poster'} alt="Movie poster" />
    <BoxInfo>

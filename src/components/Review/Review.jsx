@@ -1,31 +1,41 @@
-import { useParams } from "react-router-dom"
-import { useState, useEffect } from "react"
-import { getMovieReviews } from "api"
-
+import {  useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { getMovieReviews } from 'api';
+import { ReviewList,Title } from './ReviewStyled';
 
 export const Review = () => {
-const {id} = useParams()
-const[review,setReview] = useState();
+  const { id } = useParams();
+  const [results, setResults] = useState();
 
-useEffect(()=>{
-async function getReview(){
-try {
-    const result = await getMovieReviews(id);
-    setReview(result);
-} catch (error) {
+  useEffect(() => {
+    async function getReview() {
+      try {
+        const { results }  = await getMovieReviews(id);
+        setResults(results);
+      } catch (error) {}
+    }
+
+    getReview();
+  }, [id]);
+ 
+  return (
+      <ReviewList>
+      {results && results.length > 0 ? (results.map(({id,author,content})=>{
+      return(
+        <li key={id}>
+          <Title><b>{author}</b></Title>
+          <p> <b>Review:</b> <br />{content}</p>
+          </li>
+        )  
     
-}
-
-}
-
-getReview();
-},[id])
-
-return <>
-<h1>hello
+    }))
+      :
+      ('No info yet') 
+      }
+      </ReviewList>
     
-</h1>
+  );
+};
 
-</>
 
-}
+// BsFillPersonFill

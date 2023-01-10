@@ -1,6 +1,7 @@
 import { getMovieCredits } from "api"
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"
+import { CastList,CastImg,CastItem } from "./CastStyled";
 
 
 export const Cast = () => {
@@ -9,24 +10,27 @@ const [cast,setCast] = useState([])
 useEffect(()=>{
 async function getCast(){
 try {
-   const result = await  getMovieCredits(id);
-   setCast(result);
+   const {cast} = await  getMovieCredits(id);
+   setCast(cast);
 } catch (error) {
     console.log("Oopps,something went wrong");
 }
 }
 getCast();
 },[id]);
-const {actors} = cast;
+const BASE_IMG = 'https://image.tmdb.org/t/p/w200/'
 return (
-<ul>
-    {actors.map(({id,name})=>{
+<CastList>
+    {cast.map(({id,name,profile_path})=>{
     return(
-        <li key={id}>{name}</li>
+        <CastItem key={id}>
+            <CastImg src={profile_path ? `${BASE_IMG}${profile_path}` : 
+        'https://i.imgur.com/st2SrKk_d.jpg'} alt="Actor`s name" />
+            <p><b>Name:</b> <br />{name}</p>
+        </CastItem>
         )
-    
     })}
-</ul>
+</CastList>
     
 
     )

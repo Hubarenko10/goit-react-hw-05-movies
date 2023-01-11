@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { Form, Input, Btn } from './SearchStyle';
 import { FiSearch } from 'react-icons/fi';
 import { useState } from 'react';
@@ -35,3 +36,6 @@ export const Search = ({ onSubmit }) => {
     </Form>
   );
 };
+Search.propTypes = {
+ onSubmit: PropTypes.func.isRequired
+}

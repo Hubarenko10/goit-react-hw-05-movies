@@ -20,7 +20,8 @@ const Cast = () => {
   const BASE_IMG = 'https://image.tmdb.org/t/p/w200/';
   return (
     <CastList>
-      {cast.map(({ id, name, profile_path }) => {
+      {cast && cast.length > 0
+        ? cast.map(({ id, name, profile_path }) => {
         return (
           <CastItem key={id}>
             <CastImg
@@ -37,7 +38,7 @@ const Cast = () => {
             </p>
           </CastItem>
         );
-      })}
+      }): 'No info yet'}
     </CastList>
   );
 };
